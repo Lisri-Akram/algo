@@ -191,3 +191,74 @@ function obtenirSaison(mois) {
   let arr2 = [3, 5, 6, 7, 8];
   let uniqueElements = getUniqueElements(arr1, arr2);
   console.log(uniqueElements); 
+  //js for web dev
+  // 1. Fonction qui prend un tableau de nombres et retourne la moyenne de tous les nombres pairs
+  
+function averageOfEvenNumbers(numbers) {
+  const evenNumbers = numbers.filter(number => number % 2 === 0);
+  if (evenNumbers.length === 0) {
+    return 0;
+  }
+  const sum = evenNumbers.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+  return sum / evenNumbers.length;
+}
+
+// Exp
+const numbers1 = [1, 2, 3, 4, 5, 6];
+console.log(`La moyenne des nombres pairs est : ${averageOfEvenNumbers(numbers1)}`); //  4
+
+// 2. Fonction qui prend un tableau de mots et retourne le mot le plus long
+function findLongestWord(words) {
+  return words.reduce((longest, currentWord) => {
+    return currentWord.length > longest.length ? currentWord : longest;
+  }, "");
+}
+
+// Exp
+const words1 = ["apple", "banana", "kiwi", "strawberry"];
+console.log(`Le mot le plus long est : ${findLongestWord(words1)}`); //  strawberry
+
+// 3. Fonction qui prend un tableau d'objets représentant des livres et retourne le nombre moyen de pages.
+function averageNumberOfPages(books) {
+  if (books.length === 0) {
+    return 0;
+  }
+  const totalPages = books.map(book => book.pages).reduce((sum, pages) => sum + pages, 0);
+  return totalPages / books.length;
+}
+
+// Exp
+const books1 = [
+  { title: "Le Petit Prince", author: "Antoine de Saint-Exupéry", pages: 96 },
+  { title: "1984", author: "George Orwell", pages: 328 },
+  { title: "Fahrenheit 451", author: "Ray Bradbury", pages: 249 }
+];
+console.log(`Le nombre moyen de pages est : ${averageNumberOfPages(books1)}`); //  224.33333333333334
+
+// 4. Fonction qui prend un tableau de chaînes et retourne un objet contenant la fréquence de chaque chaîne.
+function countStringFrequency(strings) {
+  return strings.reduce((frequency, str) => {
+    frequency[str] = (frequency[str] || 0) + 1;
+    return frequency;
+  }, {});
+}
+
+// Exp
+const strings1 = ["hello", "world", "hello"];
+console.log(`La fréquence des chaînes est : ${countStringFrequency(strings1)}`); //   hello: 2, world: 1 
+
+// 5. Fonction qui prend un tableau d'objets représentant des personnes et retourne un objet contenant le nombre de personnes par ville.
+function countPeopleByCity(people) {
+  return people.reduce((cityCounts, person) => {
+    cityCounts[person.city] = (cityCounts[person.city] || 0) + 1;
+    return cityCounts;
+  }, {});
+}
+
+// Exp
+const people1 = [
+  { name: "Alice", age: 30, city: "New York" },
+  { name: "Bob", age: 40, city: "Chicago" },
+  { name: "Charlie", age: 50, city: "New York" }
+];
+console.log(`Le nombre de personnes par ville est : ${countPeopleByCity(people1)}`); //  New York: 2, Chicago: 1 
